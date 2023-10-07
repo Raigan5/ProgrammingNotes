@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font</title>
+</head>
+<body>
+    <h1>Font</h1>
+
+    <h2>Color</h2>
+    <p>See <a href="./../colors/colors.html">color</a>.</p>
+
+    <h2>Font-weight</h2>
+    <ul>
+        <li><em>normal</em> or <em>bold</em></li>
+        <li><em>ligther</em> (-100) or <em>bolder</em> (+100) relative to the parent.</li>
+        <li>number: between 100 and 900</li>
+    </ul>
+
+    <h2>Font-size</h2>
+    <ul>
+        <li>1px: pixel (0.26mm)</li>
+        <li>1pt: point (0.35mm)</li>
+        <li>1em: 100% of parent's size. It's preferable to use <em>rem</em>, because <em>em</em> can be confusing, specially if we use external CSS.</li>
+        <li>1rem: 100% of root's size (same that <em>em</em> but using <em>html</em> tag as reference)</li>
+        <li>Names of font sizes</li>
+    </ul>
+
+    <h2>Font-family</h2>
+    <h3>General</h3>
+    <ul>
+        <li>There are two important font families: serif vs santi serif.</li>
+        <li>It's important to have generic fonts as a backup in case the main fonts are not available.</li>
+    </ul>
+
+    <h3>Google fonts</h3>
+    <ol>
+        <li>Go to <a href="https://fonts.google.com/">Google fonts.</a></li>
+        <li>Select the fonts that you want.</li>
+        <li>At the right you'll see the selected fonts, copy the link at the head element. Example:</li>
+<pre>
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet"&gt;
+</pre>
+        <li>Copy the css rules at the place where do you want to use it. Example:</li>
+        <pre>font-family: 'Work Sans', sans-serif;</pre>
+    </ol>
+
+    <h2>Text-align</h2>
+
+    <h2>Text-transform</h2>
+</body>
+</html>

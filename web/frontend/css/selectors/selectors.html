@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+</head>
+<body>
+    <h1>Selectors</h1>
+    <p>Observations:</p>
+    <ul>
+        <li>We can combine the combination of the css selectors listed below</li>
+        <li>We can use <a href="./../../../debug.html">Tools for Developers</a> to get the selector.</li>
+    </ul>
+
+    <h2>Basic selectors</h2>
+
+    <ul>
+        <li>Element: apply it to the tag specified.</li>
+        <pre>tag { CSS }</pre>
+
+        <li>Class: define a class and apply this CSS rules to all elements with this class.</li>
+        <pre>.class_name { CSS }</pre>
+
+        <li>Id: define an id and apply this CSS rules only to the element with this ID.</li>
+        <pre>#id_name { CSS }</pre>
+
+        <li>Attribute: apply it to the elements with this tag and attribute (first version) or with a certain value of this attribute (second version)</li>
+<pre>
+tag[attr_name] { CSS }
+tag[attr_name="value"] { CSS }
+</pre>
+
+    <li>Universal: select all.</li>
+    <pre>* { CSS }</pre>
+
+    </ul>
+
+    <h2>Combining selectors</h2>
+    <ul>
+        <li>Group: apply the CSS rules to all selectors specified.</li>
+        <pre>selector1, selector2,.. {CSS}</pre>
+
+        <li>Direct child: apply the CSS rules to the direct childs <em>childSelector</em> of the parents <em>parentSelector</em></li>
+        <pre>parentSelector > childSelector {CSS}</pre>
+
+        <li>Descendant: apply the CSS rules to the descendants <em>descendantSelector</em> of the ancestors <em>ancestorSelector</em></li>
+        <pre>parentSelector > childSelector {CSS}</pre>
+
+        <li>chaining: apply the CSS rules to the elements where all selectors are true</li>
+        <pre>list_of_selectors_without_space {CSS}</pre>
+
+    </ul>
+
+</body>
+</html>

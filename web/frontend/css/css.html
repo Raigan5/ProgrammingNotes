@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+
+    <style>
+        ol {
+            list-style-type: none;
+            counter-reset: section;
+        }
+    
+        ol li:before {
+            content: counters(section, ".") " ";
+            counter-increment: section;
+        }
+    
+        ol ol {
+            counter-reset: subsection;
+        }
+    
+        ol ol li:before {
+            content: counters(section, ".") "." counters(subsection, "") " ";
+            counter-increment: subsection;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS</h1>
+    <h2>General</h2>
+    <p>Observations: </p>
+    <ul>
+        <li>Browsers apply <a href="https://www.w3schools.com/cssref/css_default_values.asp">default CSS styles</a></li>
+        <li>Some CSS properties apply default values when we don't specify it, increasing the difficulty to debug our code, for example:</li>
+<pre>
+border: solid black;
+border-width: 20px 10px;
+
+If we change the order, the size is overwritten by "border" default size.
+
+border-width: 20px 10px;
+border: solid black;
+</pre>
+    </ul>
+    
+    <h2>Definition</h2>
+    <ul>
+        <li>Inline: single <strong>element</strong></li>
+        <pre>&lt;body style="background-color: #EAF6F6;"&gt;</pre>
+        <li>Internal: single <strong>document</strong></li>
+<pre>
+&lt;style&gt;
+    body {
+        background-color: #EAF6F6;
+    }
+&lt;/style&gt;
+</pre>
+        <li>External: can be applied it to several pages and allows us to <strong>separate content and style</strong>. We should be <strong>careful with overwriting when we use CSS from other people</strong>, and put in the last lines the CSS that should overwrite the others.</li>
+<pre>
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="css/styles1.css"&gt;
+    &lt;link rel="stylesheet" href="css/styles2.css"&gt;
+&lt;/head&gt;
+</pre>
+    </ul>
+
+    <h2>Priority (Cascade)</h2>
+    <p>Multiple styles can be applied to the same element, and the priority will determine which one is chosen. From lower to higher priority, we have:</p>
+    <ol>
+        <li>Position: if the CSS rules are defined in the same place, the priority increases from the top to the bottom.</li>
+        <li>Specifity: how specific is the selector used</li>
+        <ol>
+            <li>Tag</li>
+            <li>Class</li>
+            <li>Value/attribute</li>
+            <li>Id</li>
+        </ol>
+        <li>Type: where is defined</li>
+        <ol>
+            <li>External</li>
+            <li>Internal</li>
+            <li>Inline</li>
+        </ol>
+        <li>Importance: write <strong>!important</strong> inside the value of a CSS property.</li>
+    </ol>
+
+    <h2>Box model</h2>
+    <p>We can create our own boxes with the tags &lt;div&gt; or &lt;span&gt;</p>
+    <p>From outside to inside we have the following elements: </p>
+    <ul>
+        <li>Margin: space <strong>outside</strong> the box.</li>
+        <pre>margin: size;</pre>
+        <li>Border: <strong>limit</strong> of the box.</li>
+        <pre>border: size style color;</pre>
+        <li>Padding: space <strong>inside</strong> the box.</li>
+        <pre>padding: size;</pre>
+        <li>Content</li>
+    </ul>
+
+    <h2>Position</h2>
+    <ul>
+        <li>Modes</li>
+        <ul>
+            <li>Relative: relative to the <strong>default</strong> position.</li>
+            <li>Absolute: relative to the nearest <strong>positioned ancestor or top left corner of webpage</strong>.</li>
+            <ul>
+                <li>z-index (default is 0): define the z position in a 3 coordinate system</li>
+                <ul>
+                    <li>Elements with higher z-index are over elements with lower z-index.</li>
+                    <li>When an element is absolute, it's over other elements with the same z-index that are not absolute.</li>
+                </ul>
+            </ul>
+            <li>Fixed: relative to the top left corner of <strong>brower's</strong> window.</li>
+            <li>Static <strong>(default)</strong>: at the bottom of the <strong>last element</strong>.</li>
+            <ul>
+                <li>left, top,... properties are ignored.</li>
+            </ul>
+        </ul>
+        <li>Position vs box model: in box model we have a box <em>B1</em> and the margin is outside of this box. 
+            Imagine that you have another box <em>B2</em> that contains the margin and the box <em>B1</em>, 
+            position its related to this box <em>B2</em>.
+        </li>
+    </ul>
+
+    <h2>Others</h2>
+    <ul>
+        <li><a href="./colors/colors.html">Colors</a></li>
+        <li><a href="./font/font.html">Font</a></li>
+        <li><a href="./selectors/selectors.html">Selectors</a></li>
+        <li><a href="./layout/layout.html">Layout</a></li>
+        <li>Framework</li>
+        <ul>
+            <li><a href="./framework/bootstrap.html">Boostrap</a></li>
+        </ul>
+    </ul>
+</body>
+</html>
