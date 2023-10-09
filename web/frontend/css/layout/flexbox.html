@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+</head>
+<body>
+    <h1>Flexbox</h1>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox guide</a></li>
+        <li>Resources from <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">Web Development Bootcamp</a></li>
+        <ul>
+            <li>Flexbox <a href="appbrewery.github.io/flexbox-sizing-exercise">sizing exercise</a></li>
+            <li>Play with flexbox properties <a href="appbrewery.github.io/flex-layout">(justify, wrap, align items, align content)</a></li>
+            <li><a href="appbrewery.github.io/flexboxfroggy">Game</a> to play with flexbox properties</li>
+        </ul>
+    </ul>
+
+    <h2>Basic</h2>
+    <ul>
+        <li>1 dimensional</li>
+        <li>There are properties for parents and others for childs.</li>
+        <li><em>display:flex</em> vs <em>"display:absolute|inline..."</em></li>
+        <ul>
+            <li>They are like 2 different systems</li>
+            <li>When we use flex, default layout properties for each element are ignored.</li>
+        </ul>
+        <li>display</li>
+        <ul>
+            <li><em>flex</em>: like <em>block</em></li>
+            <li><em>inline-flex</em>: like <em>inline-block</em></li>
+        </ul>
+    </ul>
+
+    <h2>Important concepts</h2>
+    <h3>Main vs cross axis</h3>
+    <p><em>Main axis</em> defines how properties are applied (horizontal vs vertical). The non-choosed axis will be the <em>cross axis</em></p>
+
+    <h3>Directions</h3>
+    <ul>
+        <li>Default value is <em>row</em>. Main-axis is horizontal and cross-axis is vertical.</li>
+        <li><em>column</em> swaps main and cross-axis</li>
+    </ul>
+
+    <h2>Distribution</h2>
+    <h3>Parent properties</h3>
+    <ul>
+        <li>See <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox guide</a></li>
+    </ul>
+
+    <h3>Child properties</h3>
+    <ul>
+        <li>order</li>
+        <li>align-self</li>
+    </ul>
+
+    <h2>Gaps</h2>
+    <p>There are some properties which allow us to define gaps between child elements:</p>
+    <ul>
+        <li>gap, row-gap, colum-gap</li>
+        <li>Some values of <em>align-content</em></li>
+        <li>Some values of <em>justify-content</em></li>
+    </ul>
+
+    <h2>Size</h2>
+    <h3>Priority list</h3>
+    <ul>
+        <li>min-width|max-width</li>
+        <li>flex-basis</li>
+        <li>width</li>
+        <li>content width</li>
+    </ul>
+    <h3>Properties</h3>
+    <ul>
+        <li>flex-grow</li>
+        <li>flex-shrink</li>
+        <li>flex</li>
+    </ul>
+
+    <h2>Examples</h2>
+    <h3>Center something in the middle of the screen</h3>
+<pre>
+//horizontal
+    height: 100vh; /*set the height of viewport height*/
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+//vertical
+    height: 100%; /*use this instead of viewport height to avoid layout problems*/
+</pre>
+</body>
+</html>

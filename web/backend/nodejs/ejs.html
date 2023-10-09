@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS</title>
+</head>
+<body>
+    <h1>EJS (Embedded JavaScript)</h1>
+
+    <h2>General</h2>
+    <p>EJS is a templating language that allow us to combine HTML and JavaScript to create dynamic pages.</p>
+    <p>HTML vs Template</p>
+    <ul>
+        <li>Instead of <em>res.sendFile()</em> (for static files), we use <em>res.render()</em></li>
+        <li>We use JavaScript objects as arguments.</li>
+    </ul>
+ 
+    <h2>EJS tags</h2>
+    <ul>
+        <li>Output</li>
+        <pre>&lt;%= code %&gt;</pre>
+        <li>Execute but don't output</li>
+        <pre>&lt;% code %&gt</pre>
+        <li>HTML code</li>
+        <pre>&lt;%- code %&gt;</pre>
+        <li>Escape &lt;% and %&gt; tags</li>
+        <pre>&lt;%% %%&gt;</pre>
+        <li>Comment</li>
+        <pre>&lt;%# comment %&gt;</pre>
+        <li>Include another file. Useful for header and footer</li>
+        <pre>&lt;%- include(&quot;another_ejs_file.ejs&quot;) %&gt;</pre>
+    </ul>
+
+    <h2>Folder structure</h2>
+    <h3>Static files</h3>
+    <p>Static files should be located at <strong>public</strong> directory. To set static references relative to this folder, we need this line:</p>
+    <pre>app.use(express.static("public"));</pre>
+    
+    <h3>Template files</h3>
+    <p>The template files (format .ejs) should be located inside <strong>views</strong> directory and routes are relative to that directory.</p>
+    <p>We could create a subdirectory called <strong>partials</strong> inside <em>views</em> and put the partials EJS files, if we have any.</p>
+
+    <h2>Utils</h2>
+    <h3>Partials</h3>
+    <p>Common code could be included in files called <em>partials</em> and used in other EJS files. Usually we do it with header and footer.</p>
+
+    <h3>Check if a variable exists</h3>
+    <p>In JS we can check it with:</p>
+    <pre>if (varName)</pre>
+    <p>but in EJS, we have to use:</p>
+    <pre>if (locals.varName)</pre>
+
+    <h3>Plugins for VS Code</h3>
+    <p>EJS language support: plugin that allows us to use EJS in VS Code.</p>
+</body>
+</html>

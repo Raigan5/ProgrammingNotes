@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express.js</title>
+</head>
+<body>
+    <h1>Express.js</h1>
+ 
+    <h2>What is Express.js?</h2>
+    <p>It's a framework that simplifies the creation of backend applications for Node.js.</p>
+
+    <h2>Create an Express.js server</h2>
+    <ol>
+        <li>Create a directory.</li>
+        <li>Create a file named index.js inside.</li>
+        <li>Initialize npm</li>
+        <pre>npm init -y</pre>
+        <li>Change configuration in <em>package.json</em> to use <em>import</em>. Add this line:</li>
+        <pre>"type": "module",</pre>
+        <li>Install the Express.js package</li>
+        <pre>npm i express</pre>
+        <li>Write your app in <em>index.js</em></li>
+        <li>Start the server with one of these two options:</li>
+<pre>
+node index.js
+nodemon index.js //if you already installed it globally
+</pre>
+    </ol>
+
+    <h2>Nodemon</h2>
+    <p>It's a tool that automatically restarts the server when we save a change, instead of having to stop and start it manually.</p>
+    
+    <p>We should install it globally, so we only install it one time.</p>
+    <pre>npm i -g nodemon</pre>
+
+    <p>To use it, we write <em>nodemon</em> instead of <em>node</em></p>
+    <pre>nodemon index.js</pre>
+
+    <h2>Boilerplate code</h2>
+<pre>
+import express from "express";
+const app = express();
+const port = 3000;
+
+//Our code
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}.`);
+});
+</pre>
+
+    <h2>Create an endpoint</h2>
+    <p>Put this code before the call to <em>listen()</em>.</p>
+<pre>
+app.get("/", (req, res) => {
+    res.send("It works!");
+});
+</pre>
+<p>Where:</p>
+
+<ul>
+    <li>app: object of the class express (See boilerplate code above).</li>
+    <li>get: HTTP method.</li>
+    <li>"/": path.</li>
+    <li>(req, res): </li>
+    <ul>
+        <li>Anonymous function.</li>
+        <li>req: an object with the request.</li>
+        <li>res: and object with the response.</li>
+    </ul>
+</ul>
+
+<h2>General</h2>
+<ul>
+    <li>We should use a folder called <em>public</em> for static files.</li>
+    <li>Redirect to another endpoint:</li>
+    <pre>res.redirect("/"); //with the right path</pre>
+    <li>Send a file:</li>
+<pre>
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+res.sendFile(__dirname + "/public/index.html");
+</pre>
+</ul>
+
+<h2>Middleware</h2>
+<p>Important:</p>
+<ul>
+    <li>Don't forget to call <em>next()</em> in custom middleware.</li>
+    <li>The order in which middleware are added is really important.</li>
+</ul>
+
+<h3>What are they used for</h3>
+<ul>
+    <li>Preprocess the request.</li>
+    <li>Logging.</li>
+    <li>Authentication.</li>
+    <li>Handle errors in the request.</li>
+</ul>
+
+<h3>body-parser</h3>
+<p><a href="https://www.npmjs.com/package/body-parser">body-parser</a> parses the URL-encoded request to an object 
+    available at <em>req.body</em> that contains pairs of key-values.</p>
+<p>It's usually used for handling form data.</p>
+<p>Basic code to use it:</p>
+<pre>app.use(bodyParser.urlencoded({extended: true}));</pre>
+
+<h3>morgan</h3>
+<a href="https://www.npmjs.com/package/morgan">morgan</a> is a logging middleware.
+<p>Basic code to use it:</p>
+<pre>app.use(morgan("combined"));</pre>
+
+<h3>Custom middleware</h3>
+<pre>
+app.use((req, res, next) => {
+    //do something
+    next();
+});
+</pre>
+<p><em>next()</em>: indicates that we finished our work and the next middleware or the backend can continue processing it.</p>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <h1>jQuery</h1>
+    Is JS library created to simplify DOM manipulation with JS. Its popularity has been decreasing.
+
+    <h2>Include jQuery in our project</h2>
+    <ol>
+        <li>Go to the <a href="https://jquery.com/download/">official page</a></li>
+        <li>Install it with a <strong>package manager or</strong> go to the next step to use it <strong>via CDN</strong></li>
+        <li>Go to Google or Microsoft CDN and click on it</li>
+        <li>Select the script and <strong>paste it in our code above any other script that uses it</strong>. It's something like this:</li>
+        <pre>&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js&quot;&gt;&lt;/script&gt;</pre>
+        <li>Alternative, copy the script line in the head section and add these lines to our scripts:</li>
+<pre>
+$(document).ready(function() {
+    //our code
+})
+</pre>
+    </ol>
+
+    <h2>DOM</h2>
+
+    <h3>Select</h3>
+    Instead of
+<pre>
+document.querySelector("h1");
+document.querySelectorAll("h1");
+</pre>
+we can do
+<pre>jQuery("h1");</pre>
+or just
+<pre>$("h1");</pre>
+<strong>There is no difference in jQuery between selecting one or many</strong>.
+
+    <h4>Traversing</h4>
+    <a href="https://www.w3schools.com/jquery/jquery_traversing.asp">Traversing</a> allow us to find elements 
+    based in the relationship with others elements, and this is really useful. 
+    For example, given a list of div that contains a check and a paragraph, we can perfom an action over the paragraph
+    related to the check that receives and event.
+
+    <h3>Manipulate</h3>
+
+    <h4>Styles</h4>
+    change value
+    <pre>$("h1").css("color", "green");</pre>
+    get the value
+    <pre>$("h1").css("color");</pre>
+    add class
+    <pre>$("h1").addClass("myClass myClass2...");</pre>
+    remove class
+    <pre>$("h1").removeClass("myClass myClass2...");</pre>
+    has class
+    <pre>$("h1").hasClass("myClass");</pre>
+
+    <h4>Text</h4>
+    add text
+    <pre>$("h1").text("new text");</pre>
+    add html
+    <pre>$("h1").html("new html");</pre>
+
+    <h4>Attributes (classes are attributes too)</h4>
+get the value
+<pre>
+$("h1").attr("attr1");
+$("h1").attr("class"); //get all classes
+</pre>
+set the value
+<pre>$("h1").attr("attr1", "val1");</pre>
+
+    <h4>Elements</h4>
+	create element before other
+	<pre>$(&quot;h1&quot;).before(&quot;&lt;button&gt;New&lt;/button&gt;&quot;);</pre>
+	create element after other
+	<pre>$(&quot;h1&quot;).after(&quot;&lt;button&gt;New&lt;/button&gt;&quot;);</pre>
+	create element inside and put it at the beginning
+	<pre>$(&quot;h1&quot;).prepend(&quot;&lt;button&gt;New&lt;/button&gt;&quot;);</pre>
+	create element inside and put it at the end
+	<pre>$(&quot;h1&quot;).append(&quot;&lt;button&gt;New&lt;/button&gt;&quot;);</pre>
+	remove
+	<pre>$(&quot;h1&quot;).remove();</pre>
+
+    <h3>Events</h3>
+<pre>
+$("button").click(function() {
+    $("button").css("color", "purple");
+});
+$("h1").on("mouseover", function() {
+    $("h1").css("color", "purple");
+});
+</pre>
+
+    <h3>Animations</h3>
+See <a href="https://www.w3schools.com/jquery/jquery_hide_show.asp">jQuery Effects</a>
+    
+</body>
+</html>

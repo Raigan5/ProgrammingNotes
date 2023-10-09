@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <h1>API</h1>
+
+    <h2>General</h2>
+    <p>It's an interface that a software offers to allow other software interact with it.</p>
+
+    <h2>Architecture</h2>
+    <p><a href="./rest_api.html">REST API</a></p>
+
+    <h2>Authentication levels</h2>
+    <ol start="0">
+        <li>No authentication</li>
+        <ul>
+            <li>Usually, to avoid abuse, there are a rate limit based on the IP.</li>
+        </ul>
+        <li>Basic authentication</li>
+        <ul>
+            <li>Header -> Basic: user+pass encoded in base 64</li>
+        </ul>
+        <li>API key authentication</li>
+        <ul>
+            <li>Header -> X-API-key: service_api_key</li>
+        </ul>
+        <li>Token based authentication</li>
+        <ul>
+            <li>A token is generated when a user logs in.</li>
+            <li>Header -> Authorization: Bearer generated_token.</li>
+        </ul>
+    </ol>
+</body>
+</html>

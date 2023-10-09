@@ -15,14 +15,66 @@
         <li>none: hide elements</li>
     </ul>
     <p>Observation: when an <em>inline</em> or <em>inline-block</em> elements don't have enough space in the same line, they are moved to the next line.</p>
+    
     <h2>CSS Float</h2>
-    <h2>Responsive websites</h2>
-    <h3>Media queries</h3>
-    <h3>Layout manager</h3>
     <ul>
-        <li><a href="./flexbox.html">Flexbox</a></li>
-        <li><a href="./gridlayout.html">GridLayout</a></li>
+        <li>We can use <em>float: left|right</em> to allow text wrapping around images.</li>
+        <li>We can use <em>clear: left|right|both</em> to ignore float properties of other elements and jump to the next line.</li>
+        <li>Observation: don't use it as a general layout manager.</li>
+    </ul>
+
+    <h2>Responsive websites</h2>
+    Observations:
+    <ul>
+        <li>Use browser <a href="./../../../debug.html">tools for developers</a> to test responsiveness</li>
+        <li>Maintain the aspect ratio in images:</li>
+        <ul>
+            <li>Set <em>height</em> or <em>width</em> and let the other parameter adjust automatically.</li>
+            <li>Use <em>object-fit: cover</em> to maintain aspect ration when the image size is changing due to window resizing.</li>
+        </ul>
+        <li>When some properties collide, the result could be unexpected</li>
+        <ul>
+            <li>
+                For example, when you explicitly set the width property of an image, it takes priority 
+                over horizontal margins. The margins will provide spacing around the image but won't 
+                affect the image width unless the combination of the set width and margins exceeds
+                the available width of the container. In that case, the container might overflow 
+                or the image might get scaled down to fit within the container.
+            </li>
+        </ul>
+    </ul>
+
+    <h3>Media queries</h3>
+    <ul>
+        <li>Allow us to define conditional CSS that will be executed only when the conditions are satisfied.</li>
+        <li>Be careful with CSS priority. More general conditions should be placed above more specific ones to avoid overriding them.</li>
+        <li>Some examples:</li>
+<pre>
+@media(max-width: 800px) {
+/**CSS for screens below or equal to 800px*/
+}
+
+@media(min-width: 500px) {
+/**CSS for screens greater than 500px*/
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+    /**CSS for screens greater than 500px and below or equal to 800px*/
+}
+    </pre>
+    </ul>
+    
+    <h3>Layout manager</h3>
+    <p>Observation: layouts can be combined.</p>
+    <ul>
+        <li><a href="./flexbox.html">Flexbox (1D)</a></li>
+        <li><a href="./gridlayout.html">GridLayout (2D)</a></li>
         <li><a href="./bootstrap.html">Bootstrap</a></li>
+    </ul>
+    <p>Flexbox vs Grid</p>
+    <ul>
+        <li>Flexbox is 1-dimensional and Grid is 2-dimensional.</li>
+        <li>Grid allows to overlap items.</li>
     </ul>
 </body>
 </html>

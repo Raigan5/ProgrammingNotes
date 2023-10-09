@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js</title>
+</head>
+<body>
+    <h1>Node.js</h1>
+ 
+    <h2>What is Node.js?</h2>
+    <p>Is a server-side runtime environment that allow us to execute JS outside the browser.</p>
+
+    <h2>Install Node.js on Windows</h2>
+    <ol>
+        <li>Go to the <a href="http://nodejs.org/">official web</a>.</li>
+        <li>Choose LTS version.</li>
+        <li>Install it an restart the computer.</li>
+        <li>Write <em>node -v</em> on the terminal to confirm that it's installed.</li>
+    </ol>
+
+    <h2>Run it</h2>
+    <p>We can use the command <em>node</em> to execute the interpret and work with it.</p>
+    <p>We can execute a file with the command <em>node filename.js</em>. Usually, the main file is names <em>index.js</em></p>
+
+    <h2>Frameworks</h2>
+    <p><a href="expressjs.html">Express.js</a></p>
+
+    <h2>Templating</h2>
+    <p><a href="ejs.html">EJS (Embedded JavaScript)</a></p>
+
+
+    <h2>NPM (Node Package Manager)</h2>
+    <h3>Init the project</h3>
+<pre>
+npm init //answer the questions
+npm init -y //all answers to yes
+</pre>
+
+    <h3>Install packages</h3>
+    <p>Go to the <a href="https://www.npmjs.com/">official repository</a> to find the packages that we need and install them.</p>
+    <pre>npm i package1 package2...</pre>
+    <p>If our project already has a package.json with the packages, we can simply execute this command:</p>
+    <pre>npm i</pre>
+
+    <h2>Import vs require</h2>
+    <p>We can only use one of them in our projects, by default is <em>require</em>. 
+        If we want to use <em>import</em>, we need to add </p>
+    <pre>"type": "module",</pre> 
+    <p>to our package.json.</p>
+
+</body>
+</html>

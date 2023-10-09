@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript</h1>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN documentation</a>, it has a free <a href="https://developer.mozilla.org/en-US/plus/ai-help">AI assistant</a> too.</li>
+        <li><a href="https://github.com/rwaldron/idiomatic.js">JS guidelines</a>.</li>
+    </ul>
+    
+    <h2>Definition</h2>
+    <p>Observation: include scripts to avoid trying to use elements that weren't already defined.</p>
+    <ul>
+        <li>Inline: single <strong>element</strong></li>
+        <pre>&lt;body onload="alert('Hello');"&gt;</pre>
+        <li>Internal: single <strong>document</strong></li>
+<pre>
+&lt;script type="text/javascript"&gt;
+    alert("Hello");
+&lt;/script&gt;
+</pre>
+        <li>External: can be applied it to several pages and allows us to <strong>separate content and behavior</strong>.</li>
+<pre>
+&lt;body&gt;
+    &lt;script src="index.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+    </ul>
+
+    <h2>Language</h2>
+    <h3>Variables</h3>
+    <p>Name variables using camelCase.</p>
+    <p>Declare variables:</p>
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Scope</th>
+            <th>Initial Value</th>
+        </tr>
+        <tr>
+            <td>var</td>
+            <td>Function-scoped or globally scoped (not block-scoped)</td>
+            <td>Initialized with undefined if not assigned a value</td>
+        </tr>
+        <tr>
+            <td>let</td>
+            <td>Block-scoped</td>
+            <td>Not initialized automatically</td>
+        </tr>
+        <tr>
+            <td>const</td>
+            <td>Block-scoped</td>
+            <td>Must be assigned a value when declared and cannot be reassigned</td>
+        </tr>
+        <tr>
+            <td>Global Variables</td>
+            <td>Accessible from anywhere in the code (discouraged)</td>
+            <td>No specific initialization</td>
+        </tr>
+    </table>
+
+    <h3>Functions</h3>
+    <p>Basic syntax:</p>
+    <pre>function funName(inputArgument) { return "aa" }</pre>
+    <p>Anonymous functions:</p>
+    <ul>
+        <li>Arrow syntax simplifies the syntax to declare a function.</li>
+<pre>
+x => x+1 //one parameter and one line returning something
+(x,y) => x+y //more than one parameters and one line returning something
+x => { //one parameter and one line without return or multiple lines
+    print("x");
+}
+</pre>
+    </ul>
+    <p>High order functions:</p>
+    <ul>
+        <li>Functions that have other functions as parameters.</li>
+        <li>Callbacks, functions that are called when something happens, are used to handling events.</li>
+        <li>Many times anonymous functions are used as parameters.</li>
+    </ul>
+
+    <h3>OOP</h3>
+    <ul>
+        <li>Objects</li>
+            <ul>
+                <li>Creation syntax:</li>
+<pre>
+var objName = {
+    prop1: val_1,
+    ...
+}
+</pre>
+            </ul>
+        <li>Methods</li>
+        <ul>
+            <li>Constructors have the first letter capitalizied and return an object.</li>
+            <li>Use keyword <em>this</em> to access attributes/methods from the object.</li>
+        </ul>
+    </ul>
+
+    <h3>Others</h3>
+    <ul>
+        <li>Usual data types: string, numbers, boolean, collections (arrays). Use <em>typeOf()</em> to check it.</li>
+        <li>Usual operators: arithmetic, logical, comparators,...</li>
+        <ul>
+            <li><em>===</em> vs <em>==</em>: The second one allows type conversion to verify the values.</li>
+        </ul>
+        <li>control statements: if, switch, while, for, for-each,...</li>
+    </ul>
+
+    <h2>DOM (Document Object Manipulation)</h2>
+    <p>It can be used to represent an HTML document as a tree structure. Objects inside DOM have properties and methods.</p>
+    <p>See <a href="./libraries/jquery.html">jQuery</a></p>
+
+    <h3>Select</h3>
+<pre>
+document.getElementsByTagName("tag_name");
+document.getElementsByClassName("class_name");
+document.getElementById("id_name");
+
+document.querySelector("like css selectors"); //only returns the first one
+document.querySelectorAll("like css selectors");
+</pre>
+
+    <h3>Manipulate</h3>
+    <ul>
+        <li>Style</li>
+        <ul>
+            <li>JS uses <a href="https://www.w3schools.com/jsref/dom_obj_style.asp">camelCase names</a> instead of names separated by "-"</li>
+            <li>The value has to be an string.</li>
+            <li>We can use classes and add/remove/toggle them instead of playing with CSS instructions.</li>
+        </ul>
+        <li>Content</li>
+<pre>
+object.textContent //only text
+object.innerHTML //html content
+</pre>
+        <li>Attributes</li>
+<pre>
+object.attributes //list of attributes
+object.getAttribute("name_attr");
+object.setAttribute("name_attr", "value");
+</pre>
+    </ul>
+
+    <h3>Events</h3>
+    <ul>
+        <li>Add an event to the root element</li>
+        <pre>document.addEventListener("keydown", function(event) {});</pre>
+        <li>Perform a query selector and add an event. They keyword <em>this</em> can be used as a reference to the object that triggered the event.</li>
+        <pre>document.querySelector("button").addEventListener("click", handleClick);</pre>
+        <li>Simple animation</li>
+        <ul>
+            <li>Detect an event and change a CSS style of something.</li>
+            <li>Use <em>setTimeout()</em> to change CSS back after X miliseconds.</li>
+        </ul>
+    </ul>
+
+</pre>
+</body>
+</html>

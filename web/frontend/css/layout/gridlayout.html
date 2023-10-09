@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+</head>
+<body>
+    <h1>Grid</h1>
+
+    <h2>Resources</h2>
+    <ul>
+        <li>Resources from <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">Web Development Bootcamp</a></li>
+        <ul>
+            <li>Grid <a href="appbrewery.github.io/gridgarden">layout exercises</a></li>
+            <li>Grid <a href="appbrewery.github.io/grid-sizing">sizing exercise</a></li>
+        </ul>
+    </ul>
+
+    <h2>Concepts</h2>
+    <ul>
+        <li>Grid container</li>
+        <li>Grid items</li>
+        <li>Tracks</li>
+        <ul>
+            <li>row tracks: rows</li>
+            <li>columns tracks: columns</li>
+        </ul>
+        <li>grid cells: intersection of the tracks (row and columns)</li>
+        <li>grid lines: lines that separate grid cells. It's useful to see them as array indexes, specially when they are used to specify when starts and ends something.</li>
+    </ul>
+
+    <h2>Distribution</h2>
+    <ul>
+        <li>Start-end</li>
+        <ul>
+            <li>We can specify the <strong>grid lines</strong> where a component starts and ends.</li>
+            <ul>
+                <li>Remember: it uses grid lines, not grid cells</li>
+                <pre>"grid-column-start: 1 2" //is one cell size, not two</pre>
+                <li>We specify both, size and placement.</li>
+                <li>Negative numbers can be used, where <em>-1</em> is the last grid line.</li>
+            </ul>
+        </ul>
+        <li>Order</li>
+        <ul>
+            <li>By default is <em>0</em></li>
+            <li>Elements are added in ascending order.</li>
+        </ul>
+    </ul>
+
+    <h2>Size</h2>
+    <h3>Cells</h3>
+    <ul>
+        <li>fixed size: no responsive</li>
+        <li>fixed size + auto</li>
+        <ul>
+            <li><em>auto</em> used in rows will try to expand to 100%.</li>
+            <li><em>auto</em> used in columns will try to fit its content.</li>
+        </ul>
+        <li>fractional: each column/row has a relative size.</li>
+        <li>minmax: define min and max size.</li>
+    </ul>
+    <p>Observations</p>
+    <ul>
+        <li>Can be combined</li>
+        <li>We can use <em>value: repeat(N, size)</em> to write the same size N times.</li>
+    </ul>
+
+    <h3>Elements</h3>
+    <p>span: defines how many rows/cells uses an element.</p>
+
+    <h3>Number of cells vs number of elements</h3>
+    <p>What happens when the number of cells defined by grid layout is different than the number of cells occupied by the elements?</p>
+    <ul>
+        <li>Empty cells: unused cells will collapse to a 0 size.</li>
+        <li>Overflow</li>
+        <ul>
+            <li>The other elements will use default size values.</li>
+            <li>We can use properties like <em>grid-auto-rows</em> to specify the default values.</li>
+        </ul>
+    </ul>
+</body>
+</html>

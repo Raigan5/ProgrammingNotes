@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+</head>
+<body>
+    <h1>Bootstrap</h1>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Official documentation</a> (choose the version that you are using)</li>
+        <li><a href="www.w3schools.com/bootstrap/bootstrap_templates.asp">Free templates</a>.</li>
+        <li>Resources from <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">Web Development Bootcamp</a></li>
+        <ul>
+            <li><a href="appbrewery.github.io/bootstrap-layout">layout practice</a>.</li>
+        </ul>
+    </ul>
+
+    <h2>How to use it</h2>
+    <ol>
+        <li>Go to the <a href="https://getbootstrap.com/">official web</a>. Now we have 2 alternatives: 
+        <ul>
+            <li>Find <em>package manager</em> and use npm or gem to install it.</li>
+            <li>Find <em>Include via CDN</em> and copy what you need:</li>
+            <ul>
+                <li>Style: include <em>link</em> in the head section of your HTML. Take care with the CSS priority.</li>
+                <li>Behaviour: include <em>script</em> in the body section.</li>
+            </ul>
+        </ul>
+        <li>Copy elements from the documentation or example and adapt it.</li>
+        <ul>
+            <li>Find something that looks like what do you want to do, inspect it and copy the div that contains it.</li>
+            <li>Sometimes, it contains customized CSS that we need to copy or SVG that we need to adapt.</li>
+        </ul>
+    </ol>
+
+    <h2>Layout</h2>
+    <h3>Containers</h3>
+    <ul>
+        <li>div container</li>
+        <ul>
+            <li>div row</li>
+            <ul>
+                <li>12 column items</li>
+            </ul>
+        </ul>
+    </ul>
+
+    <h3>Breakpoints</h3>
+    <p>There are different ways to specify the dimension of the screen and adapt the behavior (like mediatype)</p>
+    <ul>
+        <li>container</li>
+        <li>container-sm</li>
+        <li>...</li>
+    </ul>
+
+    <h3>Sized columns</h3>
+    <ul>
+        <li>The relative size of an element can be specified indicating the number of columns.</li>
+        <li>Multiple breakpoints can be used to specify the relative size in differents sizes of windows: <em>col-sm-12, col-md-8, col-lg-4</em></li>
+        <li>The default value of each breakpoint is <em>col</em> and is the same than <em>col-12</em>.</li>
+        <li>When the next element doesn't fit in a row, it's moved to the next row.</li>
+    </ul>
+
+    <h2>Components</h2>
+    <p>Observation: remmeber to include the <em>script</em> if you are using it by CDN.</p>
+    <p>There are a lot of components:</p>
+    <ul>
+        <li>Buttons.</li>
+        <li>Cards: image with some text below.</li>
+        <li>Navs: navigation bards</li>
+        <li>Icons</li>
+    </ul>
+
+    <h2>Utility classes</h2>
+    <h3>Spacing</h3>
+<pre>
+{property}{sides}-{size} for xs
+{property}{sides}-{breakpoint}{size} for sm, md, lg, and xl. 
+</pre>
+<ul>
+    <li>Property: m (margin), p (padding)</li>
+    <li>Sides: t (top), b (bottom),...</li>
+    <li>Size: 0,1,2,...</li>
+</ul>
+</body>
+</html>
