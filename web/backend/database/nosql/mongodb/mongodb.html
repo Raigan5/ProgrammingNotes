@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB</title>
+</head>
+<body>
+    <h1>MongoDB</h1>
+    
+    <h2>Install MongoDB on Windows</h2>
+    <p>References:</p>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=PHXhuc8MwRw">Youtube tutorial</a></li>
+        <li><a href="https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514">London App Brevewery</a> guide (outdated): follow until step 3 (included).</li>
+    </ul>
+    
+    <p>Steps:</p>
+    <ol>
+        <li>Install <a href="https://www.mongodb.com/try/download/community">mongodb server</a></li>
+        <li>Create data directory: <em>C:\data</em></li>
+        <li>(Optional) Install <a href="https://www.mongodb.com/try/download/shell">mongodb shell</a></li>
+        <li>Add directories with the server and shell executables to the <em>Path</em> environment variable</li>
+        <li>Test installations:</li>
+<pre>
+mongod --version
+mongosh --version
+</pre>
+    </ol>
+
+    <h2>Use MongoDB</h2>
+    <p>Run server:</p>
+    <pre>mongod</pre>
+
+    <h3>Use the client shell</h3>
+    <p>Run shell:</p>
+    <pre>mongosh</pre>
+
+    <p>Some useful commands:</p>
+    <ul>
+        <li>Show available <strong>non-empty</strong> databases</li>
+        <pre>show dbs</pre>
+        
+        <li>Show the current database</li>
+        <pre>db</pre>
+
+        <li>Create a new database. We won't see it with <em>show dbs</em> until we add some data.</li>
+        <pre>use newDBS</pre>
+
+        <li>Show all collections in our current database</li>
+        <pre>show collections</pre>
+
+        <li><a href="https://www.mongodb.com/docs/manual/crud/">CRUD operations</a>.</li>
+    </ul>
+
+    <h3>Use Node.js</h3>
+    <p>Two options:</p>
+    <ul>
+        <li>Use <a href="./mongoose.html">mongoose</a>.</li>
+        <li>Use <a href="https://mongodb.github.io/node-mongodb-native/?jmp=docs">MongoDB Node.js driver</a>.</li>
+    </ul>
+
+</body>
+</html>

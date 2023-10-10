@@ -7,23 +7,50 @@
 </head>
 <body>
     <h1>Database</h1>
-    <ul>
-        <li>NoSQL
-            <ul>
-                <li>MongoDB
-                    <ul>
-                        <li>Mongoose</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li>SQL
-            <ul>
-                <li>SQLite</li>
-                <li>PostgreSQL</li>
-            </ul>
-        </li>
-    </ul>
     
+    <h2>SQL vs NoSQL</h2>
+    <table border="1">
+        <tr>
+            <th>Category</th>
+            <th>SQL Databases</th>
+            <th>NoSQL Databases</th>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>Rigid, Relational</td>
+            <td>Flexible, Non-relational</td>
+        </tr>
+        <tr>
+            <td>Use Cases</td>
+            <td>Structured data with complex relationships.</td>
+            <td>Semi-structured or unstructured data, 1 to N relationships.</td>
+        </tr>
+        <tr>
+            <td>Scalability</td>
+            <td>Vertical scaling (adding more resources to a single server).</td>
+            <td>Horizontal scaling (distributing data across multiple servers), more scalable, suitable for distributed systems.</td>
+        </tr>
+        <tr>
+            <td>Common Problems</td>
+            <td>
+                <ul>
+                    <li>Schema changes can be complex; adding new information often requires altering the table structure.</li>
+                    <li>May suffer from performance bottlenecks when dealing with high-velocity data or unstructured data.</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>May lack strong consistency guarantees, which can lead to data integrity issues in some cases.</li>
+                    <li>Not well-suited for complex queries involving multiple data sources.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>SQL</h2>
+    <p><a href="./sql/sql.html">SQL</a></p>
+    
+    <h2>NoSQL</h2>
+    <p><a href="./nosql/nosql.html">NoSQL</a></p>
 </body>
 </html>

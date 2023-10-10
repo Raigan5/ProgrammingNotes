@@ -14,6 +14,8 @@
     <ul>
         <li>Instead of <em>res.sendFile()</em> (for static files), we use <em>res.render()</em></li>
         <li>We use JavaScript objects as arguments.</li>
+        <li>Add at the beginning this line to the <em>express</em> object:</li>
+        <pre>app.set('view engine', 'ejs');</pre>
     </ul>
  
     <h2>EJS tags</h2>

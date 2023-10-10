@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+</head>
+<body>
+    <h1>Axios</h1>
+
+    <h2>General</h2>
+    <p>Axios is a JavaScript package that simplifies requests to a REST API
+        compared to the general HTTPS package.
+    </p>
+    <p>Observations:</p>
+    <ul>
+        <li>Use <em>async-await</em>. See <a href="./../../frontend/js/js.html#asynchronous">dealing with asynchronous</a>.</li>
+        <li><em>response.data</em> already contains the parsed data.</li>
+    </ul>
+
+    <h2>Request examples</h2>
+    <p>Assuming some boilerplate code like:</p>
+<pre>
+import axios from 'axios';
+//Constants definitions
+async function noAuthentication() {
+    try {
+        //Request
+        console.log('Response:', response.data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+</pre>
+
+    <h3>No authentication</h3>
+<pre>
+const response = await axios.get(`${API_URL}/public/resource`);
+</pre>
+
+    <h3>Basic authentication</h3>
+<pre>
+const response = await axios.get(`${API_URL}/secured/resource`, {
+    auth: {
+        username,
+        password,
+    },
+});
+</pre>
+
+<h3>API Key authentication</h3>
+<pre>
+const response = await axios.get(`${API_URL}/protected/resource`, {
+    headers: {
+        'X-API-Key': API_KEY,
+    },
+});
+</pre>
+
+<h3>Token authentication</h3>
+<pre>
+const response = await axios.get(`${API_URL}/token-protected/resource`, {
+    headers: {
+        Authorization: `Bearer ${TOKEN}`,
+    },
+});
+</pre>
+
+<h2>Conversions</h2>
+    <p>Working with REST API in JS usually implies conversions between JSON and JS Objects.</p>
+    <ul>
+        <li>JSON vs JS Object</li>
+        <ul>
+            <li>Keys are strings in JSON.</li>
+            <li>JSON is intended to be serialized into a String.</li>
+            <li>JS Object has a more relaxed notation.</li>
+        </ul>
+        <li>JS Object to JSON</li>
+        <pre>const jsonData = JSON.stringify(data);</pre>
+        <li>JSON to JS Object</li>
+        <pre>const data = JSON.parse(jsonData);</pre>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mongoose</title>
+</head>
+<body>
+    <h1>mongoose</h1>
+
+    <h2>Documentation</h2>
+    <ul>
+        <li><a href="https://mongoosejs.com/">mongoose official page</a>.</li>
+    </ul>
+    
+    <h2>Boilerplate code</h2>
+<pre>
+const mongoose = require('mongoose');
+
+//I use IP instead of domain name (localhost)
+mongoose.connect('mongodb://127.0.0.1/your-database-name', {
+    useNewUrlParser: true
+    //We could use a pool of connections setting the poolSize
+});
+
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+    console.error('MongoDB connection error:', error);
+});
+
+//Code
+
+//If we have a server
+process.on('SIGINT', () => {
+    mongoose.connection.close(() => {
+        console.log('MongoDB connection closed through app termination');
+        process.exit(0);
+    });
+});
+
+//Or just close the connection directly after finish
+await mongoose.connection.close();
+</pre>
+
+    <h2>Schema</h2>
+    <h3>Create schema</h3>
+    <p>Creating an schema in mongoose is like creating a table in SQL. 
+        We define the fields, types, restrictions,... with an JS object.</p>
+
+<pre>
+const firstSchema = new mongoose.Schema({
+    field1: String,
+    field2: String
+});
+
+//We can embed one schema into another, but this don't create a 
+//relationship between them, just reuse the structure.
+const secondSchema = new mongoose.Schema({
+    fields: firstSchema,
+    field3: String
+});
+</pre>
+
+    <h3>Create model from schema</h3>
+    <p>Once we have an schema, we are going to create a model. 
+        We should use a singular name for it and mongoose will create 
+        a collection with this name in plural.</p>
+
+    <pre>const User = mongoose.model("User", firstSchema); // -> users</pre>
+
+    <h3>Use model</h3>
+    <h4>Create an element with the model and save it to the database:</h4>
+<pre>
+const user1 = new User({
+    field1: 'a',
+    field2: 'b'
+});
+await user1.save();
+</pre>
+
+    <h4>Find elements</h4>
+<pre>
+const users = await User.find();
+</pre>
+
+    <h4>Find elements by ID</h4>
+    <p>If we are using the default identifier, before trying to find an element using its ID, 
+        we should check that this ID has a valid format.</p>
+<pre>
+if (mongoose.Types.ObjectId.isValid(id_to_find)) {
+    const post = await User.findById(id_to_find);
+}
+</pre>
+
+    <h4>Update an element</h4>
+<pre>
+await User.updateOne({field1: 'a'}, {field2: 'ee'});
+//Use the first object to find the element and the second object to update it.
+</pre>
+
+<h2>Encrypt some fields</h2>
+<p>Be careful and don't use some methods like find() over them.</p>
+<pre>
+import encrypt from "mongoose-encryption";
+import 'dotenv/config';
+
+//code
+mySchema.plugin(encrypt, {secret: process.env.SECRET, encryptedFields: ['field_to_encrypt']});
+//code
+</pre>
+<p>Were <em>process.env.SECRET</em> is the key used to encrypt the database field.
+    Its provided using an environemnt field.</p>
+
+</body>
+</html>
