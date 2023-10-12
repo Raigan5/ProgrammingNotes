@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <h1>React</h1>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="https://react.dev/">Official web</a>.</li>
+        <li><a href="https://github.com/airbnb/javascript/tree/master/react">Airbnb React/JSX Style Guide</a>.</li>
+        <li>Plugin React developer tools: <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">Chrome</a> and <a href="https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/">Firefox</a></li>
+    </ul>
+
+    <h2>Use React in local environment</h2>
+    <h3>Installation on Windows</h3>
+    <ol>
+        <li>Install <a href="./../../backend/nodejs/nodejs.html#install">Node.js</a></li>
+        <li>Install an IDE like VS Code.</li>
+        <li>Install a <a href="https://babeljs.io/docs/en/editors">plugin to highlight syntax</a>.</li>
+        <li>Disable telemetry</li>
+        <pre>npx next telemetry disable</pre>
+    </ol>
+
+    <h3>Init and execute a project</h3>
+    <p>I had problems trying to use this instructions:</p>
+<pre>
+npx create-next-app@latest
+npm run dev
+</pre>
+    <p>So, at the moment, I'll create the project manually, install dependencies and start it:</p>
+<pre>
+npm i package1 package2...
+npm start
+</pre>
+
+    <h2>What's React?</h2>
+    <ul>
+        <li><a href="./../js/js.html">JavaScript</a> framework to build UI.</li>
+        <li>Instead of separating <a href="./../html/html.html">HTML</a>, <a href="./../css/css.html">CSS</a> and JS, 
+            React groups them into a small reusable components.</li>
+    </ul>
+
+    <h2>JSX</h2>
+    <p>JSX (JavaScript XML), provided by React, is a syntax extension for JS 
+        that allows us to write HTML-like code within JS files.
+    It uses the compiler <a href="https://babeljs.io/">Babel</a> to convert this syntax into
+    JS code to create the different elements. Due to the use of XML, we have to enclose all tags.</p>
+
+    <h3>Basic example</h3>
+<p>HTML file. We usually have a div with id <em>root</em>. Be careful with the relative path of the JSX script.</p>
+<pre>
+//html, head,...
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;../src/index.js&quot; type=&quot;text/JSX&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>JS file. We can only render one element, but we can use a <em>div</em> as a container.</p>
+<pre>
+import React from "react";
+import ReactDOM from "react-dom";
+
+ReactDOM.render(
+    &lt;div&gt;
+    //code
+    &lt;/div&gt;,
+    document.getElementById("root")
+);
+</pre>
+
+    <h3>JS inside HTML-like code</h3>
+    <ul>
+        <li>To use JS code inside HTML-like code, we should enclose it with <em>{}</em></li>
+        <li>We can use JS expressions, but statements are not allowed.</li>
+        <li>It allows complex data structures like arrays. 
+            See <a href="#createComponents">Create many components of the same type</a>.</li>
+        <li>If we want to use them to define attribute values, we don't 
+            need to enclose them with <em>""</em>.</li>
+        <li>We can achieve conditional rendering</li>
+        <ul>
+            <li>Ternary operator</li>
+            <pre>condition ? renderIfTrue : renderIfFalse</pre>
+
+            <li>&& operator (if we only want to render something if the condition is true)</li>
+            <pre>condition && renderIfTrue</pre>
+        </ul>
+    </ul>
+
+    <h2>Components</h2>
+    <h3>Define a component</h3>
+    <ul>
+        <li>Components are functions*. By convention its name is in PascalCase.</li>
+        <li>We can use function name as a tag, and we put it in a separate JSX file.</li>
+        <li>The module with the function component should contain all the necessary code.</li>
+        <li>Each component should take care of its own properties.</li>
+        <li>Usually we have a directory called <em>components</em> to put our components. 
+            We can create subdirectories if we have many.</li>
+    </ul>
+
+    <p>*Classes vs functions to create components</p>
+    <ul>
+        <li>Instead of creating a function, we can create a class that extends <em>React.Component</em> and put our code in a <em>render()</em> function.</li>
+        <li>Classes are the old way to use components that needs states. The recommendation is to use hooks and create components using functions.</li>
+    </ul>
+
+<h4>Basic component</h4>
+<pre>
+import React from "react";
+
+function App() {
+    return (
+        &lt;div&gt;
+        //code
+        &lt;/div&gt;,
+    );
+}
+
+export default App;
+</pre>
+
+<h4>Add properties</h4>
+<p>We can receive an object with the properties and use them in our component.</p>
+
+<pre>
+function App(props) {
+    props.name_property1;
+    props.name_property2;
+    ...
+}
+</pre>
+
+<p>Besides properties, we can pass functions to a component and use it to affect the parents components, for example,
+ erasing a component from a list of the parent's components when we click on it.</p>
+
+    <h4>Add a state</h4>
+    <p>Instead of classes, we are going to use <a href="https://legacy.reactjs.org/docs/hooks-intro.html">Hooks</a>.</p>
+    <p>To add a state and force the components to render when the state is changed, we'll use the hook <a href="https://reactjs.org/docs/hooks-reference.html#usestate">useState()</a></em>.</p>
+<pre>
+import React, { useState } from "react";
+
+const [state, setState] = useState(initialValue);
+//code
+</pre>
+    <p>where</p>
+    <ul>
+        <li><em>state</em> should be used in the component.</li>
+        <li><em>setState</em> should be used when we want to change <em>state</em> value</li>
+    </ul>
+
+    <p>If we want to use the property to update its state, for example, to negate it, we can't use it directly. We 
+        should assign it to another variable or use the prevValue.</p>
+    <p>Don't save components using <em>useState</em>, save objects that represents the states and render 
+    them using their states.</p>
+
+    <h4>Add event handlers</h4>
+    <p>Use a function as a callback that modify the state created by the hook <em>useState()</em> using its function.</p>
+    <p>If we want to call a function with parameters when an event occurs, we can't assign the event function directly 
+        with the parameters, we have to create a new function and then call it there. Let's see an example:</p>
+<pre>
+onChange={handleChange(id)} //won't work, because handleChange(id) will be called immediately
+onchange={() => handleChange(id);} //we have to do something like this.
+</pre>
+
+    <h4>Input data (forms)</h4>
+    <h5>Controlled component</h5>
+    <p>We are going to use <a href="https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components">controlled components</a>. 
+    So, instead of two different values:</p>
+    <ul>
+        <li>In HTML, form elements such as <em>input</em>, <em>textarea</em>, and <em>select</em> typically maintain their own state and update it based on user input.</li>
+        <li>In React, mutable state is typically kept in the state property of components, and only updated with setState().</li>
+    </ul>
+    <p>We combine them creating a <em>controlled component</em></p>
+    <pre>value={reactStateValue}</pre>
+    <p>where</p>
+    <ul>
+        <li><em>value</em> is the property of <em>input</em>, <em>textarea</em>,...</li>
+        <li><em>reactStateValue</em> is the state that we are tracking in React.</li>
+    </ul>
+
+    <h5>Prevent default submit behavior</h5>
+    <p>If we have a button in a form that submits the content, we can assign the 
+        <em>onSubmit</em> to call our function, and at the end of our function, 
+        call <em>event.preventDefault()</em> to avoid refreshing the page.</p>
+
+    <h5>Change a complex state</h5>
+    <p>If more than one element call the function that detect changes:</p>
+    <ul>
+        <li>Instead of passing a value to the function that updates the value,
+             we can use a function as an argument, and we can use <em>prevValue</em> as a 
+             parameter of this function. Then create a new value maintaining the old 
+             values except the new value that we want to change.</li>
+        <li>Don't try to use event properties inside the function that updates the state, 
+            or we'll get an error. Before entering this function, we should get 
+            the event values and then use it inside the function.</li>
+        <li>Make use of JS <a href="./../js/js.html#destructuring">destructuring assignment</a>, 
+            <a href="./../js/js.html#spread_operator">spread operator</a>, 
+            <a href="./../js/js.html#computed_names">computed property names</a>,...
+            to simplify the update method:</li>
+
+<pre>
+function handleChange(event) {
+    const {name, value} = event.target;
+    
+    setNewValue(prevValue => { //where setNewValue() is the function created with the hook useState()
+        return {
+            ...prevValue,
+            [name]: value
+        };
+    });
+}
+</pre>
+    </ul>
+
+    <h3>Use a component</h3>
+    <ul>
+        <li>We can use components as a tag.</li>
+        <li>The most common is to have only a single component called App in our index.js and this component has the other main components inside.</li>
+    </ul>
+
+
+    <h4>Basic component</h4>
+<pre>
+//imports
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById("root"));
+</pre>
+
+    <h4>Component with attributes</h4>
+    <p>We can set their attributes like any other tag:</p>
+    <pre>&lt;App attr1=value1 attr2=value2 /&gt;</pre>
+
+    <h4><a name="createComponents"></a>Create many components of the same type</h4>
+    <p>If our data is in a data structure like an array, we can use map and a function to transform it and create a component.</p>
+    <pre>array_data.map(functionToCreateEachComponent);</pre>
+
+    <h4>Material UI (MUI)</h4>
+    <p>Use <a href="https://mui.com/">MUI</a> tools (icons, components, layouts,...).</p>
+
+</body>
+</html>

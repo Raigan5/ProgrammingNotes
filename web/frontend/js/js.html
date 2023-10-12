@@ -105,7 +105,7 @@ var objName = {
         </ul>
     </ul>
 
-    <h3><a name="asynchronous">Dealing with asynchronous</a></h3>
+    <h3><a name="asynchronous">Dealing with asynchronous operations</a></h3>
     <p>There are two ways of dealing with asynchronous operations in JavaScript.:</p>
     <ul>
         <li>The modern an prefered approach:</li>
@@ -116,8 +116,72 @@ var objName = {
         <li>Use <em>method().then().catch().finally()</em></li>
     </ul>
 
+    <h3><a name="modules">Modules</a></h3>
+    <p>JS allows us to organize code in modules/files.</p>
     
+    <h4>Export</h4>
+    <p>We use exports to define what parts of our module will be visible outside.</p>
+    <p>We can only define one default export:</p>
+    <pre>export default function1;</pre>
 
+    <p>We can define other optional exports:</p>
+    <pre>export {function2, constant1};</pre>
+
+    <h4>Import</h4>
+    <p>We can use imports to define what modules and which parts of them we want to access.</p>
+    <p>Here we have several options:</p>
+    <ul>
+        <li>Import only default</li>
+        <pre>import function1 from "external-module";</pre>
+        <li>Import default and optional (names have to be the same that the ones used in the export of the module)</li>
+        <pre>import function1, {function2, constant1} from "external-module"</pre>
+        <li>Import all (it's not commonly used)</li>
+        <pre>import * as ourAlias from "external-module";</pre>
+    </ul>
+
+    <h4><a name="spread_operator"></a>Spread operator</h4>
+    <p>It allows us to convert an array to individual values to use it where individual values are expected.</p>
+    <pre>const myArray2 = [...myArray, 'd', 'e']</pre>
+
+    <p>We can use this operators with objects too.</p>
+<pre>
+const myObject2 = {
+    ...myObject,
+    id: 2
+}
+</pre>
+
+    <h4><a name="computed_names"></a>Computed property names</h4>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names">Computed property names</a> 
+    allows us to use expressions to create property names inside objects:</p>
+
+<pre>
+let myVar = "id";
+const myObject2 = {
+    ...myObject,
+    [myVar]: 2
+}
+myObject2.id;
+</pre>
+
+    <h4><a name="destructuring"></a>Destructuring assignment</h4>
+    <p>We can unpack arrays and objects.</p>
+    <p>We can assign one by one and the rest to other variable.</p>
+    <pre>[a, b, ...rest] = [10,20,30,40,50]</pre>
+
+    <p>If we don't need the rest, we can just do</p>
+    <pre>[a, b] = [10,20,30,40,50]</pre>
+
+    <p>To destructuring an object we have to use "{}" instead of "[]" and the names must match the names of the 
+        object properties. To assign it to a variable with a different name, we can use an alias:</p>
+	<pre>const { propName: newPropName} = myObject;</pre>
+	
+    <p>We can assign default values</p>
+	<pre>const {propName = "aaa"} = myObject;</pre>
+    
+	<p>Also, we can anidate destructuring to work with inner arrays/objects</p>
+<pre>const {objProperty: {propName: aliasProp}, arrayProperty: [firstElement]} = myObject;</pre>
+    
     <h3>Others</h3>
     <ul>
         <li>Usual data types: string, numbers, boolean, collections (arrays). Use <em>typeOf()</em> to check it.</li>
